@@ -1,0 +1,1 @@
+Cada pasta contendo um projeto contém seu próprio README com instruções de uso.

@@ -102,4 +102,4 @@ Para facilitar os testes da API, incluí um arquivo de coleção do Postman no r
 3. Certifique-se de que o servidor está rodando em `http://127.0.0.1:8000/`.
 4. Execute as requisições disponíveis na coleção para testar os endpoints da API.
 
-A coleção contém exemplos de requisições para criar, listar, atualizar e deletar artigos, tags e relações entre eles.
+A coleção contém exemplos de requisições para criar, listar, atualizar e deletar artigos, criar, listar, atualizar tags e relações entre eles.

@@ -11,7 +11,7 @@ class Artigos(models.Model):
     titulo = models.CharField(max_length=255)
     conteudo = models.TextField()
     slug = models.CharField(max_length=255)
-    data_criacao = models.DateTimeField(auto_now_add=True)  # Alterado para DateTimeField
+    data_criacao = models.DateField(auto_now_add=True)
     publicado = models.BooleanField()
 
     class Meta:

@@ -1,0 +1,296 @@
+{
+	"id": "0502f372-77a4-4f1a-98e5-8420a7e462ce",
+	"name": "REST API basics: CRUD, test & variable",
+	"timestamp": "2025-04-14T00:53:08.601Z",
+	"collection_id": "36557465-b95ea538-ab48-4c8d-b4f3-d53551cb2f0f",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 6,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-04-14T00:53:07.063Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "471164fd-7721-466c-9eb3-3171388e68d3",
+			"name": "Inserir Artigo",
+			"url": "http://127.0.0.1:8000/api/artigos/",
+			"time": 54,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				54
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "43c10d0f-178f-472e-a431-300156cfed96",
+			"name": "Inserir tag",
+			"url": "http://127.0.0.1:8000/api/tags/",
+			"time": 87,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				87
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "35d2cb0b-b215-4ec8-89b7-bf2406f91b79",
+			"name": "Inserir Artigos em relação a Tags",
+			"url": "http://127.0.0.1:8000/api/artigo-tags/",
+			"time": 65,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "84e3e160-4e63-4b1a-8690-5447eedb3726",
+			"name": "Listar Artigos",
+			"url": "http://127.0.0.1:8000/api/artigos/",
+			"time": 41,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "873e8b4b-21ed-41d3-9c47-09f831e0bcb2",
+			"name": "Listar tags",
+			"url": "http://127.0.0.1:8000/api/tags/",
+			"time": 49,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				49
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "121a2180-d1ff-4feb-8ee3-973bbae36e33",
+			"name": "Listar relação: Artigos e Tags",
+			"url": "http://127.0.0.1:8000/api/artigo-tags/",
+			"time": 41,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				41
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d5d851ae-7014-4236-ac7b-c5ea2be86a12",
+			"name": "Atualizar artigo",
+			"url": "http://127.0.0.1:8000/api/artigos/4/",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful PUT request": true
+			},
+			"testPassFailCounts": {
+				"Successful PUT request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Successful PUT request": true
+				}
+			]
+		},
+		{
+			"id": "4112c0d6-5bca-4453-b33c-41dd39a1b1e0",
+			"name": "Listar Artigos - 2",
+			"url": "http://127.0.0.1:8000/api/artigos/",
+			"time": 161,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				161
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ad48d749-9f17-49f9-a111-9af0c886d749",
+			"name": "deletar artigo",
+			"url": "http://127.0.0.1:8000/api/artigos/3/",
+			"time": 57,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Successful DELETE request": true
+			},
+			"testPassFailCounts": {
+				"Successful DELETE request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Successful DELETE request": true
+				}
+			]
+		},
+		{
+			"id": "e0a74c2e-1116-4c5a-9505-eadea3f855b0",
+			"name": "Listar Artigos - 3",
+			"url": "http://127.0.0.1:8000/api/artigos/",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 669,
+	"collection": {
+		"requests": [
+			{
+				"id": "471164fd-7721-466c-9eb3-3171388e68d3",
+				"method": "POST"
+			},
+			{
+				"id": "43c10d0f-178f-472e-a431-300156cfed96",
+				"method": "POST"
+			},
+			{
+				"id": "35d2cb0b-b215-4ec8-89b7-bf2406f91b79",
+				"method": "POST"
+			},
+			{
+				"id": "84e3e160-4e63-4b1a-8690-5447eedb3726",
+				"method": "GET"
+			},
+			{
+				"id": "873e8b4b-21ed-41d3-9c47-09f831e0bcb2",
+				"method": "GET"
+			},
+			{
+				"id": "121a2180-d1ff-4feb-8ee3-973bbae36e33",
+				"method": "GET"
+			},
+			{
+				"id": "d5d851ae-7014-4236-ac7b-c5ea2be86a12",
+				"method": "PUT"
+			},
+			{
+				"id": "4112c0d6-5bca-4453-b33c-41dd39a1b1e0",
+				"method": "GET"
+			},
+			{
+				"id": "ad48d749-9f17-49f9-a111-9af0c886d749",
+				"method": "DELETE"
+			},
+			{
+				"id": "e0a74c2e-1116-4c5a-9505-eadea3f855b0",
+				"method": "GET"
+			}
+		]
+	}
+}

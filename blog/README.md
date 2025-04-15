@@ -51,7 +51,7 @@ blog/
 
 ```bash
 git clone https://github.com/ueslei-ferreira/praticas-backend
-cd seu-repositorio
+cd blog
 ```
 
 2. **Crie e Ative o Ambiente Virtual**

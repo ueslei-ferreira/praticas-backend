@@ -50,7 +50,7 @@ blog/
 1. **Clone o Repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/ueslei-ferreira/praticas-backend
 cd seu-repositorio
 ```
 

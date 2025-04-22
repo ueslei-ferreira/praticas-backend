@@ -1,12 +1,11 @@
 
-CREATE TABLE usuario(
+CREATE TABLE usuario (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha_hash TEXT NOT NULL,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    data_criacao DATE DEFAULT CURRENT_DATE
 );
-
 
 CREATE TABLE tarefa(
     id SERIAL PRIMARY KEY,

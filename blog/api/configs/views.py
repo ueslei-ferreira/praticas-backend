@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 from rest_framework import generics, filters
 from .models import Artigos, Tag, ArtigoTag
 from .serializers import ArtigosSerializer, TagSerializer, ArtigoTagSerializer

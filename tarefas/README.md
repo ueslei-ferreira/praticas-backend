@@ -2,6 +2,13 @@
 
 Este repositório contém uma API simples para gerenciar dados de usuarios e suas tarefas, com funcionalidades de cadastro e login simples, sem utilizar tokens, apenas retornando o id do usuário quando logado, somente a fins de aprendizado sem utilizar login com tokens. O projeto utiliza Django e Django REST Framework para criar uma API RESTful com operações CRUD.
 
+## Principais pontos de aprendizado no processo de criação dessa API:
+  - Sessão de autenticação básica do django com Auth User
+  - Casos para uso de ViewSets e APIViews
+  - Manipulação de cookies e cabeçalhos do postman.
+
+
+
 ## Funcionalidades da API
 
 - **Usuários**:
@@ -92,7 +99,7 @@ python manage.py runserver
 ## Testando a API
 
 Para facilitar os testes da API, incluí um arquivo de coleção do Postman no repositório:  
-`REST API basics- CRUD, test & variable.postman_test_run.json`.
+`CRUD-TO-DO-API.postman_test_run.json`.
 
 ### Como usar:
 
@@ -101,4 +108,4 @@ Para facilitar os testes da API, incluí um arquivo de coleção do Postman no r
 3. Certifique-se de que o servidor está rodando em `http://127.0.0.1:8000/`.
 4. Execute as requisições disponíveis na coleção para testar os endpoints da API.
 
-A coleção contém exemplos de requisições para criar, listar, atualizar e deletar artigos, criar, listar, atualizar tags e relações entre eles.
+A coleção contém exemplos de requisições para criar, listar, atualizar e deletar usuários, criar, listar, atualizar e deletar tags e relações entre eles.

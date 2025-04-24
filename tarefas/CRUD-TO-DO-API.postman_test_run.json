@@ -1,0 +1,354 @@
+{
+	"id": "f08e6fbd-5638-454c-be22-31c3945fcc11",
+	"name": "CRUD-TO-DO-API",
+	"timestamp": "2025-04-24T04:12:58.369Z",
+	"collection_id": "36557465-b556e642-7eaa-4585-b162-e7d9d742214b",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 10,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-04-24T04:12:56.277Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2fb8b4f6-000a-4a15-927a-ffec796cc3da",
+			"name": "CRIAR-USUARIO",
+			"url": "http://127.0.0.1:8000/api/usuarios/",
+			"time": 278,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				278
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "4b53a91d-f2c4-44f3-9f91-6352763de9ca",
+			"name": "CRIAR-USUARIO Copy",
+			"url": "http://127.0.0.1:8000/api/usuarios/",
+			"time": 279,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				279
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "17e2ef35-eacf-4af1-a7e0-daecab47781a",
+			"name": "LOGIN",
+			"url": "http://127.0.0.1:8000/api/login/",
+			"time": 283,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				283
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f5a62aec-4926-41f1-b704-24833858a1c7",
+			"name": "CRIAR-TAREFA",
+			"url": "http://127.0.0.1:8000/api/tarefas/",
+			"time": 43,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "9a662a0f-421f-4229-8a8c-1a9695bb8e96",
+			"name": "CRIAR-TAREFA-2",
+			"url": "http://127.0.0.1:8000/api/tarefas/",
+			"time": 42,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "ca7fc450-ef17-494a-a452-15fab106f6f5",
+			"name": "RETORNAR-TAREFAS",
+			"url": "http://127.0.0.1:8000/api/tarefas/",
+			"time": 39,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "0d52373b-db96-4537-a176-2f9d78071327",
+			"name": "RETORNAR-TAREFAS-POR-USUARIO",
+			"url": "http://127.0.0.1:8000/api/tarefas/usuario/8/",
+			"time": 40,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "1ca35436-c104-4821-a99e-dcf1e30016fa",
+			"name": "ATUALIZAR-USUARIO",
+			"url": "http://127.0.0.1:8000/api/usuarios/1/",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful PUT request": true
+			},
+			"testPassFailCounts": {
+				"Successful PUT request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Successful PUT request": true
+				}
+			]
+		},
+		{
+			"id": "1712fb0b-550e-425b-8126-11af19e91865",
+			"name": "ATUALIZAR-TAREFA",
+			"url": "http://127.0.0.1:8000/api/tarefas/2/",
+			"time": 44,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful PUT request": true
+			},
+			"testPassFailCounts": {
+				"Successful PUT request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Successful PUT request": true
+				}
+			]
+		},
+		{
+			"id": "b82d0b5a-7476-4e45-ad75-c131af0bac92",
+			"name": "APAGAR-USUARIO",
+			"url": "http://127.0.0.1:8000/api/usuarios/1/",
+			"time": 45,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Successful DELETE request": true
+			},
+			"testPassFailCounts": {
+				"Successful DELETE request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Successful DELETE request": true
+				}
+			]
+		},
+		{
+			"id": "3f5f0207-339f-4ad8-858c-adca8c0c0b77",
+			"name": "APAGAR-TAREFA",
+			"url": "http://127.0.0.1:8000/api/tarefas/2/",
+			"time": 44,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Successful DELETE request": true
+			},
+			"testPassFailCounts": {
+				"Successful DELETE request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Successful DELETE request": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1180,
+	"collection": {
+		"requests": [
+			{
+				"id": "2fb8b4f6-000a-4a15-927a-ffec796cc3da",
+				"method": "POST"
+			},
+			{
+				"id": "4b53a91d-f2c4-44f3-9f91-6352763de9ca",
+				"method": "POST"
+			},
+			{
+				"id": "17e2ef35-eacf-4af1-a7e0-daecab47781a",
+				"method": "POST"
+			},
+			{
+				"id": "f5a62aec-4926-41f1-b704-24833858a1c7",
+				"method": "POST"
+			},
+			{
+				"id": "9a662a0f-421f-4229-8a8c-1a9695bb8e96",
+				"method": "POST"
+			},
+			{
+				"id": "ca7fc450-ef17-494a-a452-15fab106f6f5",
+				"method": "GET"
+			},
+			{
+				"id": "0d52373b-db96-4537-a176-2f9d78071327",
+				"method": "GET"
+			},
+			{
+				"id": "1ca35436-c104-4821-a99e-dcf1e30016fa",
+				"method": "PATCH"
+			},
+			{
+				"id": "1712fb0b-550e-425b-8126-11af19e91865",
+				"method": "PATCH"
+			},
+			{
+				"id": "b82d0b5a-7476-4e45-ad75-c131af0bac92",
+				"method": "DELETE"
+			},
+			{
+				"id": "3f5f0207-339f-4ad8-858c-adca8c0c0b77",
+				"method": "DELETE"
+			}
+		]
+	}
+}

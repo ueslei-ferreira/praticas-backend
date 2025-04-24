@@ -10,20 +10,6 @@ from django.utils.decorators import method_decorator
 from .models import Usuario, Tarefa
 from .serializers import UsuarioSerializer, TarefaSerializer, LoginSerializer
 
-class UsuarioViewSet(viewsets.ModelViewSet):
-    """
-    Permite criar, listar, atualizar e deletar usuários.
-    Apenas a criação (register) é aberta para não autenticados.
-    """
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
-
-    def get_permissions(self):
-        if self.action == "create": 
-            return [AllowAny()]
-        return super().get_permissions()
-    
-
 class SessaoUsuarioPermission(BasePermission):
     """
     Permissão customizada que permite acesso apenas se houver 'usuario_id' na sessão.
@@ -31,6 +17,30 @@ class SessaoUsuarioPermission(BasePermission):
     """
     def has_permission(self, request, view):
         return bool(request.session.get('usuario_id'))
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    """
+    Permite criar, listar, atualizar e deletar usuários.
+    Apenas a criação (register) é aberta para não autenticados.
+    """
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+    permission_classes = [SessaoUsuarioPermission]
+    
+    def get_permissions(self):
+        if self.action == "create": 
+            return [AllowAny()]
+        return super().get_permissions()
+
+    def partial_update(self, request, *args, **kwargs):
+        
+        return super().partial_update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        
+        return super().destroy(request, *args, **kwargs)
+    
+
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class TarefaViewSet(viewsets.ModelViewSet):
@@ -82,12 +92,15 @@ class LoginView(APIView):
                 return Response({"erro": "Senha incorreta"}, status=status.HTTP_401_UNAUTHORIZED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
+@method_decorator(ensure_csrf_cookie, name='dispatch')
 class TarefasPorUsuarioView(APIView):
     """
     Retorna todas as tarefas relacionadas a um usuário específico (filtrando por usuario_id).
     """
+    permission_classes = [SessaoUsuarioPermission]
     def get(self, request, usuario_id):
         tarefas = Tarefa.objects.filter(usuario_id=usuario_id)
         serializer = TarefaSerializer(tarefas, many=True)
+        
         return Response(serializer.data)

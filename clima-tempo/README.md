@@ -1,0 +1,1 @@
+Esse projeto visa construir uma API para consumir uma API de terceiros, com informações sobre clima e tempo. Com foco em cache, utilizando redis, a API será construída utilizando django.

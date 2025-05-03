@@ -5,7 +5,7 @@ from rest_framework.response import Response
 import requests
 import os
 from django.conf import settings
-from server_redis.weather_cache import get_cache, set_cache
+from cliente_redis.weather_cache import get_cache, set_cache
 
 class WeatherView(APIView):
     def post(self, request):

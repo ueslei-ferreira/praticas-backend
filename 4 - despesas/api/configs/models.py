@@ -21,9 +21,11 @@ class CategoriaDespesas(models.Model):
 
 
 class Despesa(models.Model):
-    vencimento = models.DateField(blank=True, null=True)
-    montante = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    vencimento = models.DateField()
+    descricao = models.CharField(max_length=50)
+    montante = models.DecimalField(max_digits=10, decimal_places=2)
     tipo_despesas = models.ForeignKey(CategoriaDespesas, on_delete=models.CASCADE, related_name='despesas')
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='despesas')
 
     class Meta:
         managed = False

@@ -14,17 +14,11 @@ VALUES
 
 CREATE TABLE despesa (
   id SERIAL PRIMARY KEY,
-  descricao VARCHAR(50),
   vencimento DATE,
   montante DECIMAL(10,2),
   tipo_despesas_id INT NOT NULL,
   CONSTRAINT despesa_tipo_despesas_id_fkey
     FOREIGN KEY (tipo_despesas_id)
     REFERENCES categoria_despesas(id)
-    ON DELETE CASCADE,
-  user_id INT NOT NULL,
-  CONSTRAINT despesa_user_id_fkey
-    FOREIGN KEY (user_id)
-    REFERENCES users(id)
-    ON DELETE CASCADE,
+    ON DELETE CASCADE
 );

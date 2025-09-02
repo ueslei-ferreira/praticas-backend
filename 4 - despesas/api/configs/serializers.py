@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CategoriaDespesas, Despesa, User
+from .models import User, CategoriaDespesas, Despesa
 
 class CategoriaDespesasSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -7,16 +7,33 @@ class CategoriaDespesasSerializer(serializers.ModelSerializer):
         fields = "__all__"
         
 class DespesasSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Despesa
         fields = "__all__"
+        depth = 1
         
 class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=False, allow_blank=True)
+
     class Meta:
         model = User
-        fields = ('id', 'email', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
-    
+        fields = ('email', 'password')
+        extra_kwargs = {
+            'password': {'write_only': True},
+        }
+
     def create(self, validated_data):
-        user = User.objects.create_user(email=validated_data['email'], password=validated_data['password'])
+        password = validated_data.pop('password', None)
+        # usa create_user para garantir hashing
+        user = User.objects.create_user(password=password, **validated_data)
         return user
+
+    def update(self, instance, validated_data):
+        password = validated_data.pop('password', None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        if password:
+            instance.set_password(password)  # garante hash
+        instance.save()
+        return instance

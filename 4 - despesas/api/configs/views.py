@@ -9,6 +9,7 @@ from .models import *
 class DespesaView(viewsets.ModelViewSet):
     queryset = Despesa.objects.all()
     serializer_class = DespesasSerializer
+    http_method_names = ['get', 'post', 'put', 'patch', 'delete']
     
 class CategoriaDespesasView(viewsets.ModelViewSet):
     queryset = CategoriaDespesas.objects.all()
@@ -36,9 +37,31 @@ class UserView(viewsets.ModelViewSet):
         data.update({'refresh': str(refresh), 'access': str(refresh.access_token)})
         return Response(data, status=status.HTTP_201_CREATED)
 
-    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['get', 'put', 'patch'], permission_classes=[IsAuthenticated])
     def me(self, request):
-        serializer = self.get_serializer(request.user)
+        # GET: retorna os dados do usuário logado
+        if request.method == 'GET':
+            serializer = self.get_serializer(request.user)
+            return Response(serializer.data)
+
+        # PUT/PATCH: atualiza somente o usuário autenticado
+        partial = request.method == 'PATCH'
+        serializer = self.get_serializer(request.user, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data)
+
+    # Protege update/partial_update para que só admin ou dono possam alterar outro usuário
+    def update(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if not (request.user.is_staff or request.user == obj):
+            return Response({'detail': 'Não autorizado.'}, status=status.HTTP_403_FORBIDDEN)
+        return super().update(request, *args, **kwargs)
+
+    def partial_update(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if not (request.user.is_staff or request.user == obj):
+            return Response({'detail': 'Não autorizado.'}, status=status.HTTP_403_FORBIDDEN)
+        return super().partial_update(request, *args, **kwargs)
 
 

@@ -8,10 +8,20 @@ class CategoriaDespesasSerializer(serializers.ModelSerializer):
         
 class DespesasSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    # leitura: objeto aninhado
+    tipo_despesas = CategoriaDespesasSerializer(read_only=True)
+
+    # escrita: envie "tipo_despesas_id": <id>
+    tipo_despesas_id = serializers.PrimaryKeyRelatedField(
+        source='tipo_despesas',
+        queryset=CategoriaDespesas.objects.all(),
+        write_only=True,
+        required=True
+    )
+
     class Meta:
         model = Despesa
-        fields = "__all__"
-        depth = 1
+        fields = ("id", "vencimento", "descricao", "montante", "user", "tipo_despesas", "tipo_despesas_id")
         
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=False, allow_blank=True)

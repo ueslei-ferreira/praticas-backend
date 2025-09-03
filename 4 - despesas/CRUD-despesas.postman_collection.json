@@ -27,7 +27,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"descricao\": \"feira do mes\",\r\n    \"vencimento\": \"2025-09-30\",\r\n    \"montante\": \"100.50\",\r\n    \"tipo_despesas\": 1\r\n}",
+							"raw": "{\r\n    \"descricao\": \"whey protein\",\r\n    \"vencimento\": \"2025-10-21\",\r\n    \"montante\": \"120.50\",\r\n    \"tipo_despesas_id\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,6 +287,62 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "apaga_despesa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/despesa/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"despesa",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -476,6 +532,34 @@
 				},
 				{
 					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let json = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", json.access);\r",
+									"\r",
+									"\r",
+									"let json = pm.response.json();\r",
+									"\r",
+									"// salva o access token\r",
+									"if (json.access) {\r",
+									"    pm.collectionVariables.set(\"access_token\", json.access);\r",
+									"    console.log(\"Access token salvo:\", json.access);\r",
+									"}\r",
+									"\r",
+									"// salva o refresh token\r",
+									"if (json.refresh) {\r",
+									"    pm.collectionVariables.set(\"refresh_token\", json.refresh);\r",
+									"    console.log(\"Refresh token salvo:\", json.refresh);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -557,16 +641,17 @@
 			"value": "https://99318cc5-f2db-4208-ad3a-d1964e768001.mock.pstmn.io"
 		},
 		{
-			"value": "",
-			"disabled": true
-		},
-		{
 			"key": "access_token",
-			"value": ""
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2OTA2MjI4LCJpYXQiOjE3NTY5MDI2MjgsImp0aSI6IjU0YTkxN2M1NDcyODQyNTU5YjAzMDI3MjgzY2U2NTdjIiwidXNlcl9pZCI6Mn0.xSnuzXfI6LwMkcaHsQ2LCgOnpN3oxcqcNqwG5fc3Gk4"
 		},
 		{
 			"key": "refresh_token",
 			"value": ""
+		},
+		{
+			"value": null,
+			"type": "string",
+			"disabled": true
 		}
 	]
 }

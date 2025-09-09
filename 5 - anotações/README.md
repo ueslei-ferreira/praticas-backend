@@ -16,7 +16,12 @@ OBS: o view atual lê o arquivo enviado (`file`) e grava seu conteúdo em `conte
 ## Requisitos
 - Python 3.11+
 - virtualenv
-- Dependências (instalar via pip conforme `requirements.txt`, se existir)
+- Dependências 
+
+```
+  pip install `requirements.txt`
+
+```
 
 ## Setup (PowerShell / Windows)
 1. Ativar virtualenv:

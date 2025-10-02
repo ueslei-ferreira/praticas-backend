@@ -77,7 +77,7 @@ WSGI_APPLICATION = "encurtador.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "encurtador-urls",
+        "NAME": "encurtador",
         "USER": "postgres",
         "PASSWORD": "1234",
         "HOST": "localhost",

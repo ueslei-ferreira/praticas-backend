@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from .serializers import UrlSerializer
 from .models import Urls
 from urllib.parse import urlparse, urlunparse
+from django.shortcuts import redirect, get_object_or_404
 import hashlib
 
 def normalizar_url(url: str) -> str:
@@ -27,16 +28,21 @@ def normalizar_url(url: str) -> str:
 def gerar_hash(url: str) -> str:
     hash_completo = hashlib.sha256(url.encode('utf-8'))
     return hash_completo.hexdigest()
-def gerar_url_curta(hash: str, tamanho: int = 7) -> str:
+
+def gerar_url_curto(hash: str, tamanho: int = 7) -> str:
     return hash[:tamanho]
 
-def garantir_unicidade(url_curta: str) -> str:
-    original = url_curta
+def garantir_unicidade(url_curto: str) -> str:
+    original = url_curto
     contador = 0
-    while Urls.objects.filter(url_curta=url_curta).exists():
+    while Urls.objects.filter(url_curto=url_curto).exists():
         contador += 1
-        url_curta = original + str(contador)
-    return url_curta
+        url_curto = original + str(contador)
+    return url_curto
+
+def redirect_view(request, url_curto):
+    url_obj = get_object_or_404(Urls, url_curto=url_curto)
+    return redirect(url_obj.url_longo)
 
 class UrlView(viewsets.ModelViewSet):
     queryset = Urls.objects.all()
@@ -44,23 +50,23 @@ class UrlView(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         
-        url_longa = request.data.get('url_longa')
+        url_longo = request.data.get('url_longo')
         
-        if not url_longa:
-            return Response({"error": "url_longa é necessária"},status=status.HTTP_400_BAD_REQUEST)
+        if not url_longo:
+            return Response({"error": "url_longo é necessária"},status=status.HTTP_400_BAD_REQUEST)
         
-        url_longa = normalizar_url(url_longa)
+        url_longo = normalizar_url(url_longo)
         
-        existente = Urls.objects.filter(url_longa = url_longa).first()
+        existente = Urls.objects.filter(url_longo = url_longo).first()
         if existente:
             serializer = self.get_serializer(existente)
             return Response(serializer.data, status.HTTP_200_OK)
         
-        hash_url = gerar_hash(url_longa)
-        url_curta = gerar_url_curta(hash_url)
-        url_curta = garantir_unicidade(url_curta)
+        hash_url = gerar_hash(url_longo)
+        url_curto = gerar_url_curto(hash_url)
+        url_curto = garantir_unicidade(url_curto)
         
-        serializer = self.get_serializer(data={"url_longa": url_longa, "url_curta":url_curta})
+        serializer = self.get_serializer(data={"url_longo": url_longo, "url_curto":url_curto})
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         
